@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>QNU // CLASSIFIED</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    color: #18344d;
+
+    background:
+        radial-gradient(circle at 10% 10%, rgba(0,140,210,.08), transparent 25%),
+        radial-gradient(circle at 90% 80%, rgba(245,196,0,.10), transparent 25%),
+        #f4f8fb;
+
+    padding: 20px;
+}
+.container {
+    max-width: 920px;
+    margin: auto;
+}
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+
+    color: #607687;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #42b968;
+    border-radius: 50%;
+
+    box-shadow: 0 0 0 4px rgba(66,185,104,.12);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #005b9f,
+            #007fc2 65%,
+            #0098d8
+        );
+
+    color: white;
+
+    padding: 35px 30px;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 15px 40px rgba(0,91,159,.18);
+
+    margin-bottom: 20px;
+}
+
+.header::before {
+    content: "CLASSIFIED";
+    position: absolute;
+
+    right: -25px;
+    top: 20px;
+
+    transform: rotate(12deg);
+
+    border: 2px solid rgba(255,255,255,.25);
+
+    padding: 7px 20px;
+
+    font-size: 12px;
+    letter-spacing: 3px;
+
+    opacity: .5;
+}
+
+.header::after {
+    content: "";
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    right: -70px;
+    bottom: -100px;
+
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 50%;
+}
+
+.header-small {
+    font-size: 12px;
+    letter-spacing: 3px;
+    opacity: .75;
+    margin-bottom: 10px;
+}
+
+.header h1 {
+    font-size: 36px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.header p {
+    font-size: 15px;
+    opacity: .9;
+}
+
+.header-code {
+    margin-top: 20px;
+
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    border: 1px solid rgba(255,255,255,.35);
+    border-radius: 8px;
+
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+
+    background: rgba(255,255,255,.08);
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.intro {
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+    margin-bottom: 25px;
+
+    border: 1px solid #e1ebf2;
+
+    box-shadow:
+        0 7px 22px rgba(0,0,0,.05);
+}
+
+.intro-label {
+    display: inline-block;
+
+    background: #fff4c7;
+    color: #9a7400;
+
+    padding: 5px 10px;
+
+    border-radius: 6px;
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    margin-bottom: 12px;
+}
+
+.intro h2 {
+    color: #005d9f;
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.intro p {
+    color: #657988;
+    line-height: 1.65;
+    font-size: 14px;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.progress-track {
+    flex: 1;
+
+    height: 8px;
+
+    background: #dfe9ef;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+
+    width: 0%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0072b8,
+            #00a0dc
+        );
+
+    border-radius: 20px;
+
+    transition: width .5s ease;
+}
+
+.progress-count {
+    min-width: 55px;
+
+    text-align: right;
+
+    color: #587083;
+
+    font-family: monospace;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 18px;
+
+    color: #244b64;
+}
+
+.section-title span {
+    color: #0075b8;
+}
+
+.section-title h2 {
+    font-size: 19px;
+}
+
+/* =========================
+   MISSION AREA
+========================= */
+
+.missions {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 25px;
+}
+
+/* đường nối */
+
+.missions::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 60px;
+    bottom: 60px;
+
+    width: 2px;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            #b9d3e2 0px,
+            #b9d3e2 7px,
+            transparent 7px,
+            transparent 14px
+        );
+
+    transform: translateX(-50%);
+
+    z-index: 0;
+}
+
+/* =========================
+   MISSION CARD
+========================= */
+
+.mission {
+    position: relative;
+    z-index: 1;
+
+    background: rgba(255,255,255,.96);
+
+    border: 1px solid #d9e6ee;
+
+    border-radius: 19px;
+
+    padding: 23px;
+
+    cursor: pointer;
+
+    min-height: 190px;
+
+    box-shadow:
+        0 7px 20px rgba(26,72,99,.06);
+
+    transition:
+        transform .25s,
+        box-shadow .25s,
+        border-color .25s;
+
+    overflow: hidden;
+}
+
+.mission::after {
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    right: -50px;
+    bottom: -50px;
+
+    border-radius: 50%;
+
+    background: rgba(0,130,195,.05);
+}
+
+.mission:hover {
+    transform: translateY(-5px);
+
+    border-color: #0088ca;
+
+    box-shadow:
+        0 13px 30px rgba(0,100,160,.13);
+}
+
+/* completed */
+
+.mission.completed {
+    background: #f1fbf4;
+
+    border-color: #58bb75;
+
+    cursor: default;
+}
+
+.mission.completed:hover {
+    transform: none;
+}
+
+/* number badge */
+
+.mission-tag {
+    position: absolute;
+
+    top: 14px;
+    right: 14px;
+
+    font-family: monospace;
+
+    font-size: 10px;
+
+    color: #7c8d98;
+
+    letter-spacing: 1px;
+}
+
+.mission.completed .mission-tag {
+    color: #2d9b50;
+}
+
+/* icon */
+
+.mission-icon {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #edf7fc;
+
+    border-radius: 14px;
+
+    font-size: 25px;
+
+    margin-bottom: 15px;
+}
+
+.mission.completed .mission-icon {
+    background: #dcf5e3;
+}
+
+/* title */
+
+.mission h3 {
+    color: #075f98;
+
+    font-size: 18px;
+
+    margin-bottom: 7px;
+}
+
+.mission p {
+    color: #718391;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+/* status */
+
+.mission-status {
+    position: absolute;
+
+    bottom: 17px;
+    right: 20px;
+
+    color: #9aa8b1;
+
+    font-family: monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+}
+
+.mission.completed .mission-status {
+    color: #2b9c4f;
+    font-weight: bold;
+}
+
+/* reward */
+
+.reward {
+    display: none;
+
+    margin-top: 16px;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    background: #dff6e5;
+
+    color: #16803b;
+
+    font-size: 13px;
+
+    text-align: center;
+
+    font-weight: bold;
+
+    animation: rewardIn .35s ease;
+}
+
+.mission.completed .reward {
+    display: block;
+}
+
+@keyframes rewardIn {
+
+    from {
+        transform: translateY(8px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+}
+
+/* =========================
+   FINAL ACCESS
+========================= */
+
+.final-box {
+    position: relative;
+
+    background: white;
+
+    border-radius: 22px;
+
+    padding: 32px 25px;
+
+    text-align: center;
+
+    border: 2px solid #e0e9ef;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.06);
+
+    transition: .4s;
+}
+
+.final-box.locked {
+    background:
+        repeating-linear-gradient(
+            -45deg,
+            #fafcfd,
+            #fafcfd 10px,
+            #f5f8fa 10px,
+            #f5f8fa 20px
+        );
+}
+
+.final-box.unlocked {
+    border-color: #e0bd31;
+
+    box-shadow:
+        0 12px 35px rgba(202,166,35,.15);
+}
+
+.final-lock {
+    font-size: 42px;
+
+    margin-bottom: 10px;
+
+    transition: .3s;
+}
+
+.final-box h2 {
+    color: #9b7300;
+
+    font-size: 27px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+}
+
+.final-box p {
+    color: #72818b;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+}
+
+/* final input */
+
+.final-input {
+    width: 100%;
+
+    max-width: 280px;
+
+    padding: 14px 16px;
+
+    border-radius: 11px;
+
+    border: 2px solid #dce5ea;
+
+    background: white;
+
+    text-align: center;
+
+    font-size: 20px;
+
+    letter-spacing: 5px;
+
+    outline: none;
+
+    margin-bottom: 12px;
+
+    transition: .2s;
+}
+
+.final-input:focus {
+    border-color: #0079bc;
+
+    box-shadow:
+        0 0 0 4px rgba(0,121,188,.08);
+}
+
+.final-button {
+    padding: 13px 25px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: #0067aa;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.final-button:hover:not(:disabled) {
+    background: #004e83;
+
+    transform: translateY(-2px);
+}
+
+.final-button:disabled {
+    opacity: .4;
+
+    cursor: not-allowed;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(15,44,62,.45);
+
+    backdrop-filter: blur(5px);
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    z-index: 1000;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 480px;
+
+    background: white;
+
+    border-radius: 22px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.2);
+
+    animation: modalIn .25s ease;
+}
+
+@keyframes modalIn {
+
+    from {
+        transform: translateY(15px) scale(.96);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+
+}
+
+.modal-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.modal-label {
+    color: #718593;
+
+    font-family: monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+.close-x {
+    border: none;
+
+    background: #eef3f6;
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    color: #657681;
+}
+
+.modal-title {
+    color: #0065a7;
+
+    font-size: 25px;
+
+    margin-bottom: 15px;
+}
+
+.question {
+    background: #f1f8fc;
+
+    border-left: 4px solid #0084c5;
+
+    border-radius: 10px;
+
+    padding: 17px;
+
+    margin-bottom: 18px;
+
+    color: #38566b;
+
+    font-weight: bold;
+
+    line-height: 1.5;
+}
+
+.answer-input {
+    width: 100%;
+
+    padding: 14px;
+
+    border: 2px solid #dce6eb;
+
+    border-radius: 11px;
+
+    outline: none;
+
+    font-size: 16px;
+
+    margin-bottom: 12px;
+}
+
+.answer-input:focus {
+    border-color: #0088ca;
+}
+
+.submit-answer {
+    width: 100%;
+
+    border: none;
+
+    border-radius: 11px;
+
+    padding: 14px;
+
+    background: #0068aa;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.submit-answer:hover {
+    background: #005487;
+}
+
+.close-btn {
+    width: 100%;
+
+    border: none;
+
+    border-radius: 11px;
+
+    padding: 12px;
+
+    background: #edf2f5;
+
+    color: #657681;
+
+    margin-top: 8px;
+
+    cursor: pointer;
+}
+
+.feedback {
+    display: none;
+
+    margin-top: 13px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+.feedback.correct {
+    display: block;
+
+    background: #ddf7e4;
+
+    color: #18803c;
+}
+
+.feedback.wrong {
+    display: block;
+
+    background: #fff0f0;
+
+    color: #cf3d3d;
+}
+
+/* =========================
+   SUCCESS
+========================= */
+
+.success {
+    display: none;
+
+    margin-top: 22px;
+
+    background: white;
+
+    border: 2px solid #58bb75;
+
+    border-radius: 22px;
+
+    padding: 38px 20px;
+
+    text-align: center;
+
+    animation: successIn .5s ease;
+}
+
+.success.active {
+    display: block;
+}
+
+@keyframes successIn {
+
+    from {
+        transform: scale(.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+}
+
+.success-icon {
+    font-size: 65px;
+
+    margin-bottom: 12px;
+}
+
+.success h2 {
+    color: #16803b;
+
+    font-size: 29px;
+
+    margin-bottom: 10px;
+
+    letter-spacing: 1px;
+}
+
+.success p {
+    color: #6d7d87;
+
+    line-height: 1.6;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+
+    color: #91a0a9;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    margin-top: 25px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+    body {
+        padding: 12px 10px 35px;
+    }
+
+    .topbar {
+        font-size: 9px;
+    }
+
+    .header {
+        padding: 28px 20px;
+    }
+
+    .header h1 {
+        font-size: 27px;
+    }
+
+    .missions {
+        grid-template-columns: 1fr;
+    }
+
+    .missions::before {
+        display: none;
+    }
+
+    .mission {
+        min-height: 175px;
+    }
+
+    .modal-content {
+        padding: 23px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+<!-- =========================
+     TOP BAR
+========================= -->
+
+<div class="topbar">
+
+    <div>
+        QNU // SECRET PROJECT
+    </div>
+
+    <div class="status">
+
+        <span class="status-dot"></span>
+
+        SYSTEM ONLINE
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<div class="header">
+
+    <div class="header-small">
+        CLASSIFIED MISSION FILE
+    </div>
+
+    <h1>
+        🔐 QNU SECRET MISSION
+    </h1>
+
+    <p>
+        Hồ sơ nhiệm vụ đặc biệt
+    </p>
+
+    <div class="header-code">
+        FILE NO. QNU-05 // ACCESS RESTRICTED
+    </div>
+
+</div>
+
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<div class="intro">
+
+    <div class="intro-label">
+        MISSION BRIEFING
+    </div>
+
+    <h2>
+        Hồ sơ đã được kích hoạt.
+    </h2>
+
+    <p>
+
+        Năm mật thư đang được giấu trong
+        bộ hiện vật của trò chơi.
+        Hãy giải từng mật thư và nhập đáp án
+        vào NHIỆM VỤ tương ứng.
+        <br><br>
+
+        Mỗi đáp án chính xác sẽ mở khóa
+        một <b>con số bí mật</b>.
+        Hãy ghi nhớ tất cả các con số.
+        Khi hoàn thành đủ 5 nhiệm vụ,
+        hệ thống sẽ mở quyền truy cập
+        <b>MẬT MÃ CUỐI CÙNG</b>.
+
+    </p>
+
+</div>
+
+
+<!-- =========================
+     PROGRESS
+========================= -->
+
+<div class="progress-area">
+
+    <div class="progress-track">
+
+        <div
+            class="progress-fill"
+            id="progressFill"
+        ></div>
+
+    </div>
+
+    <div
+        class="progress-count"
+        id="progressText"
+    >
+        0 / 5
+    </div>
+
+</div>
+
+
+<!-- =========================
+     TITLE
+========================= -->
+
+<div class="section-title">
+
+    <span>◆</span>
+
+    <h2>
+        MISSION FILES
+    </h2>
+
+</div>
+
+
+<!-- =========================
+     MISSIONS
+========================= -->
+
+<div class="missions">
+
+
+    <!-- MISSION 1 -->
+
+    <div
+        class="mission"
+        id="mission1"
+        onclick="openMission(1)"
+    >
+
+        <div class="mission-tag">
+            FILE 01
+        </div>
+
+        <div class="mission-icon">
+            🔎
+        </div>
+
+        <h3>
+            Mật thư số 1
+        </h3>
+
+        <p>
+            Tìm và giải mật thư số 1
+            trong bộ hiện vật.
+        </p>
+
+        <div class="reward">
+            🔓 MẬT MÃ ĐÃ NHẬN:
+            <strong>7</strong>
+        </div>
+
+        <div
+            class="mission-status"
+            id="status1"
+        >
+            LOCKED
+        </div>
+
+    </div>
+
+
+    <!-- MISSION 2 -->
+
+    <div
+        class="mission"
+        id="mission2"
+        onclick="openMission(2)"
+    >
+
+        <div class="mission-tag">
+            FILE 02
+        </div>
+
+        <div class="mission-icon">
+            🧩
+        </div>
+
+        <h3>
+            Mật thư số 2
+        </h3>
+
+        <p>
+            Tìm và giải mật thư số 2
+            trong bộ hiện vật.
+        </p>
+
+        <div class="reward">
+            🔓 MẬT MÃ ĐÃ NHẬN:
+            <strong>3</strong>
+        </div>
+
+        <div
+            class="mission-status"
+            id="status2"
+        >
+            LOCKED
+        </div>
+
+    </div>
+
+
+    <!-- MISSION 3 -->
+
+    <div
+        class="mission"
+        id="mission3"
+        onclick="openMission(3)"
+    >
+
+        <div class="mission-tag">
+            FILE 03
+        </div>
+
+        <div class="mission-icon">
+            🗝️
+        </div>
+
+        <h3>
+            Mật thư số 3
+        </h3>
+
+        <p>
+            Tìm và giải mật thư số 3
+            trong bộ hiện vật.
+        </p>
+
+        <div class="reward">
+            🔓 MẬT MÃ ĐÃ NHẬN:
+            <strong>9</strong>
+        </div>
+
+        <div
+            class="mission-status"
+            id="status3"
+        >
+            LOCKED
+        </div>
+
+    </div>
+
+
+    <!-- MISSION 4 -->
+
+    <div
+        class="mission"
+        id="mission4"
+        onclick="openMission(4)"
+    >
+
+        <div class="mission-tag">
+            FILE 04
+        </div>
+
+        <div class="mission-icon">
+            📜
+        </div>
+
+        <h3>
+            Mật thư số 4
+        </h3>
+
+        <p>
+            Tìm và giải mật thư số 4
+            trong bộ hiện vật.
+        </p>
+
+        <div class="reward">
+            🔓 MẬT MÃ ĐÃ NHẬN:
+            <strong>1</strong>
+        </div>
+
+        <div
+            class="mission-status"
+            id="status4"
+        >
+            LOCKED
+        </div>
+
+    </div>
+
+
+    <!-- MISSION 5 -->
+
+    <div
+        class="mission"
+        id="mission5"
+        onclick="openMission(5)"
+    >
+
+        <div class="mission-tag">
+            FILE 05
+        </div>
+
+        <div class="mission-icon">
+            🕵️
+        </div>
+
+        <h3>
+            Mật thư số 5
+        </h3>
+
+        <p>
+            Tìm và giải mật thư số 5
+            trong bộ hiện vật.
+        </p>
+
+        <div class="reward">
+            🔓 MẬT MÃ ĐÃ NHẬN:
+            <strong>5</strong>
+        </div>
+
+        <div
+            class="mission-status"
+            id="status5"
+        >
+            LOCKED
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     FINAL ACCESS
+========================= -->
+
+<div
+    class="final-box locked"
+    id="finalBox"
+>
+
+    <div
+        class="final-lock"
+        id="finalIcon"
+    >
+        🔒
+    </div>
+
+    <h2>
+        FINAL ACCESS
+    </h2>
+
+    <p id="finalDescription">
+
+        Quyền truy cập đang bị khóa.
+        <br>
+        Hoàn thành tất cả Mission để mở khóa.
+
+    </p>
+
+
+    <input
+        type="text"
+        id="finalInput"
+        class="final-input"
+        maxlength="5"
+        placeholder="NHẬP MÃ CUỐI"
+        disabled
+    >
+
+
+    <br>
+
+
+    <button
+        class="final-button"
+        id="finalButton"
+        onclick="checkFinalCode()"
+        disabled
+    >
+
+        🔐 ACCESS
+
+    </button>
+
+</div>
+
+
+<!-- =========================
+     SUCCESS
+========================= -->
+
+<div
+    class="success"
+    id="success"
+>
+
+    <div class="success-icon">
+        🎉
+    </div>
+
+    <h2>
+        ACCESS GRANTED
+    </h2>
+
+    <p>
+
+        Chúc mừng!
+        <br>
+        Bạn đã hoàn thành toàn bộ
+        nhiệm vụ và giải mã thành công.
+
+    </p>
+
+</div>
+
+
+<footer>
+
+    QNU SECRET MISSION // END OF FILE
+
+</footer>
+
+</div>
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div
+    class="modal"
+    id="modal"
+>
+
+    <div class="modal-content">
+
+
+        <div class="modal-top">
+
+            <div class="modal-label">
+                CLASSIFIED INPUT
+            </div>
+
+            <button
+                class="close-x"
+                onclick="closeModal()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <h2
+            class="modal-title"
+            id="modalTitle"
+        >
+            MISSION 01
+        </h2>
+
+
+        <div
+            class="question"
+            id="question"
+        >
+            🔐 Đáp án mật thư số 1
+        </div>
+
+
+        <input
+            type="text"
+            id="answerInput"
+            class="answer-input"
+            placeholder="Nhập đáp án..."
+        >
+
+
+        <button
+            class="submit-answer"
+            onclick="checkAnswer()"
+        >
+
+            🔎 XÁC NHẬN ĐÁP ÁN
+
+        </button>
+
+
+        <div
+            class="feedback"
+            id="feedback"
+        ></div>
+
+
+        <button
+            class="close-btn"
+            onclick="closeModal()"
+        >
+
+            Đóng hồ sơ
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   DỮ LIỆU GAME
+=====================================================
+
+   BÉ CHỈ CẦN ĐỔI "answer".
+
+   number = số người chơi nhận được
+   sau khi giải đúng mật thư.
+
+===================================================== */
+
+const missions = {
+
+    1: {
+        title: "MISSION 01",
+        question: "🔐 ai là người có lời nói dối ?",
+
+        answer: "chi",
+
+        number: "7"
+    },
+
+    2: {
+        title: "MISSION 02",
+        question: "🔐 Đây là địa điểm nào?",
+
+        answer: "thư viện",
+
+        number: "3"
+    },
+
+    3: {
+        title: "MISSION 03",
+        question: "🔐 Đây là địa điểm nào?",
+
+        answer: "Hội trường B",
+
+        number: "9"
+    },
+
+    4: {
+        title: "MISSION 04",
+        question: "🔐 X là tòa nhà nào?",
+
+        answer: "a3",
+
+        number: "1"
+    },
+
+    5: {
+        title: "MISSION 05",
+        question: "🔐 Giữa các toàn nhà chỉ cần dấu cách",
+
+        answer: "a3 a6 a1 a8",
+
+        number: "5"
+    }
+
+};
+
+
+/* =====================================================
+   BIẾN
+===================================================== */
+
+let currentMission = null;
+
+let completed = [];
+
+
+/* =====================================================
+   MỞ MISSION
+===================================================== */
+
+function openMission(number) {
+
+    if (completed.includes(number)) {
+        return;
+    }
+
+    currentMission = number;
+
+    document.getElementById("modalTitle")
+        .innerText =
+        missions[number].title;
+
+    document.getElementById("question")
+        .innerText =
+        missions[number].question;
+
+    document.getElementById("answerInput")
+        .value = "";
+
+    document.getElementById("feedback")
+        .className = "feedback";
+
+    document.getElementById("feedback")
+        .innerText = "";
+
+    document.getElementById("modal")
+        .classList.add("active");
+
+    setTimeout(() => {
+
+        document.getElementById("answerInput")
+            .focus();
+
+    }, 100);
+}
+
+
+/* =====================================================
+   ĐÓNG POPUP
+===================================================== */
+
+function closeModal() {
+
+    document.getElementById("modal")
+        .classList.remove("active");
+
+}
+
+
+/* =====================================================
+   KIỂM TRA ĐÁP ÁN
+===================================================== */
+
+function checkAnswer() {
+
+    const input =
+        document.getElementById("answerInput")
+            .value
+            .trim()
+            .toLowerCase();
+
+    const correct =
+        missions[currentMission]
+            .answer
+            .trim()
+            .toLowerCase();
+
+    const feedback =
+        document.getElementById("feedback");
+
+
+    /* ĐÚNG */
+
+    if (input === correct) {
+
+        if (!completed.includes(currentMission)) {
+
+            completed.push(currentMission);
+
+            const mission =
+                document.getElementById(
+                    "mission" + currentMission
+                );
+
+            mission.classList.add("completed");
+
+
+            /* Đổi LOCKED → CLEARED */
+
+            document.getElementById(
+                "status" + currentMission
+            ).innerText =
+                "CLEARED";
+
+        }
+
+
+        feedback.className =
+            "feedback correct";
+
+        feedback.innerText =
+            "✓ CHÍNH XÁC — MẬT MÃ ĐÃ ĐƯỢC CẤP: " +
+            missions[currentMission].number;
+
+
+        updateProgress();
+
+
+        setTimeout(() => {
+
+            closeModal();
+
+            checkUnlock();
+
+        }, 1300);
+
+    }
+
+
+    /* SAI */
+
+    else {
+
+        feedback.className =
+            "feedback wrong";
+
+        feedback.innerText =
+            "✕ ĐÁP ÁN KHÔNG KHỚP — HÃY KIỂM TRA LẠI MẬT THƯ.";
+
+    }
+
+}
+
+
+/* =====================================================
+   TIẾN ĐỘ
+===================================================== */
+
+function updateProgress() {
+
+    const count =
+        completed.length;
+
+    document.getElementById(
+        "progressText"
+    ).innerText =
+        count + " / 5";
+
+    document.getElementById(
+        "progressFill"
+    ).style.width =
+        (count / 5 * 100) + "%";
+
+}
+
+
+/* =====================================================
+   MỞ FINAL ACCESS
+===================================================== */
+
+function checkUnlock() {
+
+    if (completed.length === 5) {
+
+        const finalBox =
+            document.getElementById(
+                "finalBox"
+            );
+
+        finalBox.classList.remove("locked");
+
+        finalBox.classList.add("unlocked");
+
+
+        document.getElementById(
+            "finalIcon"
+        ).innerText =
+            "🔓";
+
+
+        document.getElementById(
+            "finalDescription"
+        ).innerHTML =
+            "🎉 Tất cả Mission đã hoàn thành." +
+            "<br>" +
+            "Hãy nhập mã cuối cùng để hoàn tất nhiệm vụ.";
+
+
+        document.getElementById(
+            "finalInput"
+        ).disabled = false;
+
+
+        document.getElementById(
+            "finalButton"
+        ).disabled = false;
+
+
+        document.getElementById(
+            "finalInput"
+        ).focus();
+
+    }
+
+}
+
+
+/* =====================================================
+   FINAL CODE
+=====================================================
+
+   KHÔNG HIỂN THỊ MÃ TRÊN GIAO DIỆN.
+
+   Hệ thống tự ghép số của 5 Mission
+   để kiểm tra đáp án cuối.
+
+===================================================== */
+
+function checkFinalCode() {
+
+    const input =
+        document.getElementById(
+            "finalInput"
+        )
+        .value
+        .trim();
+
+
+    const finalCode =
+        missions[1].number +
+        missions[2].number +
+        missions[3].number +
+        missions[4].number +
+        missions[5].number;
+
+
+    if (input === finalCode) {
+
+        document.getElementById(
+            "success"
+        ).classList.add("active");
+
+
+        document.getElementById(
+            "success"
+        ).scrollIntoView({
+            behavior: "smooth"
+        });
+
+
+        document.getElementById(
+            "finalDescription"
+        ).innerHTML =
+            "✓ ACCESS GRANTED";
+
+
+    }
+
+    else {
+
+        alert(
+            "✕ MÃ KHÔNG CHÍNH XÁC.\n\nHãy kiểm tra lại 5 con số đã thu thập."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   ENTER ĐỂ TRẢ LỜI
+===================================================== */
+
+document.getElementById(
+    "answerInput"
+)
+.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+
+            checkAnswer();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   ENTER FINAL CODE
+===================================================== */
+
+document.getElementById(
+    "finalInput"
+)
+.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+
+            checkFinalCode();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   CLICK NGOÀI POPUP
+===================================================== */
+
+document.getElementById(
+    "modal"
+)
+.addEventListener(
+    "click",
+    function(event) {
+
+        if (event.target === this) {
+
+            closeModal();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
